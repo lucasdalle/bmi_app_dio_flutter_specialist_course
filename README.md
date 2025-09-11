@@ -6,7 +6,7 @@ A Flutter application built with clean architecture and Riverpod for state manag
 
 - **Main input screen** for entering weight and height  
 - **Support for metric and imperial units** (kg/m and lb/ft)  
-- **Result widget** displaying BMI value and classification  
+- **Result widget** displaying BMI value, classification and tip  
 - **History screen** showing previous calculations in a dismissible list  
 - **State management** with Riverpod for modular and reactive design  
 - **Clean architecture** separating domain, data, and presentation layers  
