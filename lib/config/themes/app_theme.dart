@@ -1,4 +1,5 @@
 import 'package:bmi_app/config/colors/colors.dart';
+import 'package:bmi_app/config/themes/app_spacing_theme_extension.dart';
 import 'package:bmi_app/config/themes/card_theme.dart';
 import 'package:bmi_app/config/themes/elevated_button_theme.dart';
 import 'package:bmi_app/config/themes/input_decoration_theme.dart';
@@ -22,6 +23,7 @@ class AppTheme {
       elevatedButtonTheme: AppElevatedButtonThemes.lightTheme(),
       inputDecorationTheme: AppInputDecorationThemes.lightTheme(),
       navigationBarTheme: AppNavigationBarTheme.lightTheme(),
+      extensions: const <ThemeExtension<dynamic>>[AppSpacing(xs: 4, sm: 8, md: 16, lg: 24, xl: 32)],
     );
   }
 

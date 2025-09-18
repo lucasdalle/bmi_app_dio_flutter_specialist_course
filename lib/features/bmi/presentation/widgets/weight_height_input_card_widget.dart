@@ -4,10 +4,10 @@ import 'package:bmi_app/features/bmi/presentation/riverpod/providers/bmi_provide
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WeightHeightInputCard extends ConsumerStatefulWidget {
-  const WeightHeightInputCard({super.key, required this.constraints});
+import '../../../../config/themes/app_spacing_theme_extension.dart';
 
-  final BoxConstraints constraints;
+class WeightHeightInputCard extends ConsumerStatefulWidget {
+  const WeightHeightInputCard({super.key});
 
   @override
   ConsumerState<WeightHeightInputCard> createState() => _WeightHeightInputCardState();
@@ -24,14 +24,10 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
       child: Form(
         key: _formKey,
         child: Column(
-          spacing: widget.constraints.maxHeight * 0.05,
+          spacing: context.spacing.xl,
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                left: widget.constraints.maxWidth * 0.05,
-                right: widget.constraints.maxWidth * 0.05,
-                top: widget.constraints.maxHeight * 0.05,
-              ),
+              padding: EdgeInsets.only(left: context.spacing.md, right: context.spacing.md, top: context.spacing.xl),
               child: TextFormField(
                 controller: _weightTextEditingController,
                 style: TextTheme.of(context).bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
@@ -39,10 +35,7 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
                 decoration: InputDecoration(
                   label: Text('Weight (${BmiInputHintFormatter.getWeightUnit(ref.watch(bmiInputProvider).isMetric)})'),
                   hintText: BmiInputHintFormatter.getWeightHint(ref.watch(bmiInputProvider).isMetric),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: widget.constraints.maxWidth * 0.05,
-                    vertical: widget.constraints.maxHeight * 0.025,
-                  ),
+                  contentPadding: EdgeInsets.symmetric(horizontal: context.spacing.md, vertical: context.spacing.md),
                 ),
                 validator: (value) {
                   return BmiInputValidator.validateWeight(value, ref.watch(bmiInputProvider).isMetric);
@@ -56,7 +49,7 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: widget.constraints.maxWidth * 0.05),
+              padding: EdgeInsets.symmetric(horizontal: context.spacing.md),
               child: TextFormField(
                 controller: _heightTextEditingController,
                 style: TextTheme.of(context).bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
@@ -64,10 +57,7 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
                 decoration: InputDecoration(
                   label: Text('Height (${BmiInputHintFormatter.getHeightUnit(ref.watch(bmiInputProvider).isMetric)})'),
                   hintText: BmiInputHintFormatter.getHeightHint(ref.watch(bmiInputProvider).isMetric),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: widget.constraints.maxWidth * 0.05,
-                    vertical: widget.constraints.maxHeight * 0.025,
-                  ),
+                  contentPadding: EdgeInsets.symmetric(horizontal: context.spacing.md, vertical: context.spacing.md),
                 ),
                 validator: (value) {
                   return BmiInputValidator.validateHeight(value, ref.watch(bmiInputProvider).isMetric);
@@ -81,18 +71,14 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                left: widget.constraints.maxWidth * 0.05,
-                right: widget.constraints.maxWidth * 0.05,
-                bottom: widget.constraints.maxHeight * 0.025,
-              ),
+              padding: EdgeInsets.only(left: context.spacing.xl, right: context.spacing.xl, bottom: context.spacing.lg),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   icon: Icon(
                     Icons.calculate_rounded,
                     color: Theme.of(context).colorScheme.onPrimary,
-                    size: widget.constraints.maxWidth * 0.05,
+                    size: context.spacing.lg,
                     applyTextScaling: true,
                   ),
                   onPressed: () {
@@ -102,7 +88,7 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
                     }
                   },
                   label: Padding(
-                    padding: EdgeInsets.symmetric(vertical: widget.constraints.maxHeight * 0.015),
+                    padding: EdgeInsets.symmetric(vertical: context.spacing.md),
                     child: Text('Calculate BMI', style: TextTheme.of(context).titleLarge),
                   ),
                 ),

@@ -11,7 +11,7 @@ class GlassCard extends StatelessWidget {
     return ClipRRect(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white.withAlpha(30),
+          color: Theme.of(context).colorScheme.secondaryContainer.withAlpha(50),
           borderRadius: const BorderRadius.all(Radius.circular(kCardBorderRadius)),
         ),
         child: child,
