@@ -9,7 +9,7 @@ import '../entities/bmi_category.dart';
 import '../entities/bmi_result.dart';
 
 class CalculateBmi {
-  CalculateBmi();
+  const CalculateBmi();
 
   BmiResult call(BmiInput input) {
     final double weightKg = input.isMetric ? input.weight : input.weight.convertFromTo(MASS.pounds, MASS.kilograms)!;
@@ -21,6 +21,3 @@ class CalculateBmi {
     return BmiResult(bmiValue: bmi, resultCategory: category);
   }
 }
-
-//TODO save bmi
-//TODO get history

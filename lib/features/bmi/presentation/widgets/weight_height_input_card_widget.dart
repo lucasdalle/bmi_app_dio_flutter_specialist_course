@@ -84,7 +84,7 @@ class _WeightHeightInputCardState extends ConsumerState<WeightHeightInputCard> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState?.save();
-                      ref.refresh(bmiResultProvider);
+                      ref.invalidate(bmiResultProvider);
                     }
                   },
                   label: Padding(
